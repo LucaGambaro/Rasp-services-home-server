@@ -1,0 +1,7 @@
+services:
+  main-dashboard:
+    build: .
+    container_name: main-dashboard
+    restart: unless-stopped
+    ports:
+      - "8082:80"
