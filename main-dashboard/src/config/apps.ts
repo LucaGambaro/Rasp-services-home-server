@@ -8,7 +8,7 @@ export const apps: AppLink[] = [
     name: 'Portainer',
     description: 'Gestione dei container Docker',
     icon: Container,
-    protocol: 'https',
+    protocol: 'http',
     port: 9443,
   },
   {
@@ -16,7 +16,7 @@ export const apps: AppLink[] = [
     name: 'Ad Guard',
     description: 'DHCP & DNS server',
     icon: Container,
-    protocol: 'https',
+    protocol: 'http',
     port: 8080,
   },
   {
