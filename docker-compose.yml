@@ -27,6 +27,18 @@ services:
 
 
 
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: unless-stopped
+    # host network so the tunnel can reach the Pi's sshd on localhost:22
+    network_mode: host
+    command: tunnel --no-autoupdate --config /etc/cloudflared/config.yml run mio-tunnel-ssh
+    volumes:
+      - /home/lg/services/cloudflared:/etc/cloudflared
+
+
+
   main-dashboard:
     build: main-dashboard
     container_name: main-dashboard
