@@ -1,0 +1,30 @@
+# Regola per AdGuard Home tramite dominio locale
+#http://adguard.lan {
+#    reverse_proxy 127.0.0.1:8080
+#}
+
+# Regola per un secondo servizio o sito web
+http://sito2.lan {
+	reverse_proxy 192.168.1.55:8081
+}
+
+# (Opzionale) Se vuoi che la navigazione diretta sull'IP mostri qualcosa di predefinito
+#http://192.168.1.55 {
+#   reverse_proxy 192.168.1.55:8080
+#respond "Benvenuto nel Reverse Proxy di Caddy!"
+#}
+
+adguard.lan {
+        tls internal
+        reverse_proxy 192.168.1.55:8080
+}
+
+portainer.lan {
+        tls internal
+        reverse_proxy 192.168.1.55:9000
+}
+
+http://192.168.1.55 {
+	respond "Benvenuto nel Reverse Proxy di Caddy!"
+        #reverse_proxy 192.168.1.55:8080
+}
