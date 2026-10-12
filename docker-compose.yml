@@ -28,14 +28,15 @@ services:
 
 
   cloudflared:
-    image: cloudflare/cloudflared:latest
+    # community build with armv7 (32-bit) support, the official image has none
+    image: ghcr.io/shmick/docker-cloudflared
     container_name: cloudflared
     restart: unless-stopped
     # host network so the tunnel can reach the Pi's sshd on localhost:22
     network_mode: host
-    command: tunnel --no-autoupdate --config /etc/cloudflared/config.yml run mio-tunnel-ssh
-    volumes:
-      - /home/lg/services/cloudflared:/etc/cloudflared
+    command: tunnel --no-autoupdate run
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARED_TOKEN}
 
 
 
