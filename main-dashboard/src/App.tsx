@@ -4,6 +4,10 @@ import { buildAppUrl } from './utils/buildAppUrl';
 
 export const App = () => {
   const { hostname } = window.location;
+  const links = apps.flatMap((app) => {
+    const href = buildAppUrl(app, hostname);
+    return href ? [{ app, href }] : [];
+  });
 
   return (
     <>
@@ -20,9 +24,9 @@ export const App = () => {
         </header>
         <nav aria-label="Applicazioni">
           <ul className="grid">
-            {apps.map((app) => (
+            {links.map(({ app, href }) => (
               <li key={app.id}>
-                <AppButton app={app} href={buildAppUrl(app, hostname)} />
+                <AppButton app={app} href={href} />
               </li>
             ))}
           </ul>
