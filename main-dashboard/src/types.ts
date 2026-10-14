@@ -9,4 +9,6 @@ export interface AppLink {
   icon: LucideIcon;
   protocol: AppProtocol;
   port: number;
+  // Public URL served through the reverse proxy. Apps without it are hidden when the dashboard is opened from outside the LAN.
+  externalUrl?: string;
 }

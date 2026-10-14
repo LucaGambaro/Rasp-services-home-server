@@ -1,4 +1,4 @@
-import { Container, Globe } from 'lucide-react';
+import { Container, Globe, Weight } from 'lucide-react';
 import type { AppLink } from '../types';
 
 // Add a new entry here to get a new button on the dashboard.
@@ -10,6 +10,7 @@ export const apps: AppLink[] = [
     icon: Container,
     protocol: 'https',
     port: 9443,
+    externalUrl: "http://portainer.postgly.cloud"
   },
   {
     id: 'adguard',
@@ -18,6 +19,7 @@ export const apps: AppLink[] = [
     icon: Container,
     protocol: 'http',
     port: 8080,
+    externalUrl: "https://adguard.postgly.cloud"
   },
   {
     id: 'caddy-site',
@@ -26,5 +28,13 @@ export const apps: AppLink[] = [
     icon: Globe,
     protocol: 'http',
     port: 80,
+  },
+  {
+    id: 'Ethos',
+    name: 'Auto prenotazione Ethos',
+    description: 'Prenotazioni palestra',
+    icon: Weight,
+    protocol: 'http',
+    port: 8083,
   },
 ];

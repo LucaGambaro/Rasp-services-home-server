@@ -25,6 +25,21 @@ portainer.lan {
 }
 
 http://192.168.1.55 {
-	respond "Benvenuto nel Reverse Proxy di Caddy!"
-        #reverse_proxy 192.168.1.55:8080
+        #respond "Benvenuto nel Reverse Proxy di Caddy!"
+        tls internal
+        reverse_proxy 192.168.1.55:8082
+}
+
+https://homeserver.postgly.cloud {
+        reverse_proxy 192.168.1.55
+}
+
+adguard.postgly.cloud {
+        reverse_proxy 192.168.1.55:8080
+}
+
+
+dashboard.lan {
+        tls internal
+        reverse_proxy 192.168.1.55:8082
 }

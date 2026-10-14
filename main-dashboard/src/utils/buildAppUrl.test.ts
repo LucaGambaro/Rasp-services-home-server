@@ -17,3 +17,21 @@ describe('buildAppUrl', () => {
     expect(buildAppUrl({ protocol: 'https', port: 80 }, 'home.lan')).toBe('https://home.lan:80');
   });
 });
+
+describe('buildAppUrl from an external host', () => {
+  it('returns the external url', () => {
+    expect(
+      buildAppUrl({ protocol: 'https', port: 9443, externalUrl: 'https://portainer.example.com' }, 'home.example.com'),
+    ).toBe('https://portainer.example.com');
+  });
+
+  it('returns undefined when the app has no external url', () => {
+    expect(buildAppUrl({ protocol: 'https', port: 9443 }, 'home.example.com')).toBeUndefined();
+  });
+
+  it('ignores the external url on a local host', () => {
+    expect(
+      buildAppUrl({ protocol: 'https', port: 9443, externalUrl: 'https://portainer.example.com' }, 'home.lan'),
+    ).toBe('https://home.lan:9443');
+  });
+});
